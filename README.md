@@ -1,6 +1,22 @@
 # SpotifyDownloader
 
-This template should help get you started developing with Vue 3 in Vite.
+A simple way to load in your favourite songs into a MP3 player!
+
+# Current Techstack:
+
+## Frontend:
+- Vue 3 (TS) & Pinia
+- Vite
+- Tailwindcss & DaisyUI
+- Cypress
+- Playwright
+- oxlint
+
+## Backend:
+- Django REST framework
+- [spotDL](https://spotdl.readthedocs.io/en/latest/#music-sourcing-and-audio-quality)
+
+If you clone this project, make sure to also set things up in your spotify developer dashboard!
 
 ## Recommended IDE Setup
 
@@ -33,6 +49,25 @@ pnpm install
 
 ```sh
 pnpm dev
+```
+
+
+### Setting up the django server:
+
+```sh
+# Create a virtual environment to isolate our package dependencies locally
+python -m venv env
+source env/bin/activate  # On Windows use `env\Scripts\activate`
+python manage.py runserver 
+```
+
+### Migrating changes:
+```sh
+# Create a virtual environment to isolate our package dependencies locally
+python -m venv env
+source env/bin/activate  # On Windows use `env\Scripts\activate`
+python manage.py makemmigrations djangospotifydownloader
+pythin manage.py migrate 
 ```
 
 ### Type-Check, Compile and Minify for Production
