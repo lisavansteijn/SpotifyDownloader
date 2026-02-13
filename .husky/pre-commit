@@ -1,1 +1,5 @@
 pnpm lint
+# Auto-fix Python issues with ruff (equivalent to eslint --fix)
+ruff check --fix djangospotifydownloader/
+# Then run pylint for comprehensive checks
+pylint djangospotifydownloader/

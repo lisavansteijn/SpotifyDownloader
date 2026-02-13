@@ -1,20 +1,34 @@
-from django.contrib.auth.models import Group, User
+"""
+Serializers for the djangospotifydownloader project.
+"""
+from django.contrib.auth import get_user_model
+from django.contrib.auth.models import Group
 from rest_framework import serializers
 
 from djangospotifydownloader.quickstart.models import SpotifyLink
 
+
 class UserSerializer(serializers.HyperlinkedModelSerializer):
+    """
+    Serializer for the User model.
+    """
     class Meta:
-        model = User
+        model = get_user_model()
         fields = ["url", "username", "email", "groups"]
 
 
 class GroupSerializer(serializers.HyperlinkedModelSerializer):
+    """
+    Serializer for the Group model.
+    """
     class Meta:
         model = Group
         fields = ["url", "name"]
 
 class LinkSerializer(serializers.HyperlinkedModelSerializer):
+    """
+    Serializer for the SpotifyLink model.
+    """
     class Meta:
         model = SpotifyLink
         fields = ["link"]
