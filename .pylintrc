@@ -1,7 +1,7 @@
 [MASTER]
 # Load pylint-django plugin
 load-plugins=pylint_django
-ignore=tests.py, urls.py, migrations
+ignore=tests.py, urls.py, migrations, .pylintrc
 
 [BASIC]
 no-docstring-rgx=__.*__|_.*
@@ -13,7 +13,6 @@ good-names=_,i,j,k,e,qs,pk,setUp,tearDown
 
 [REPORTS]
 msg-template={path}:{line}: [{msg_id}({symbol}), {obj}] {msg}
-include-ids=yes
 
 [MESSAGES CONTROL]
 # Disable specific warnings if needed
