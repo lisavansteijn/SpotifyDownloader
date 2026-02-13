@@ -20,4 +20,6 @@ jobs:
         pip install pylint-django
     - name: Analysing the code with pylint
       run: |
-        pylint --django-settings-module=djangospotifydownloader.settings $(git ls-files '*.py')
+        # Use .pylintrc config file explicitly - it will handle ignore patterns
+        pylint --rcfile=.pylintrc --django-settings-module=djangospotifydownloader.settings \
+          djangospotifydownloader/

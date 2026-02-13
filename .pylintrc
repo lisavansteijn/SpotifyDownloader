@@ -3,9 +3,6 @@
 load-plugins=pylint_django
 ignore=tests.py, urls.py, migrations
 
-# Django settings module
-DJANGO_SETTINGS_MODULE='pylint --load-plugins=pylint_django --django-settings-module=djangospotifydownloader.settings'
-
 [BASIC]
 no-docstring-rgx=__.*__|_.*
 class-rgx=[A-Z_][a-zA-Z0-9_]+$
