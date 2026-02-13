@@ -1,6 +1,11 @@
 # SpotifyDownloader
 
-A simple way to load in your favourite songs into a MP3 player!
+A simple way to load in your favourite songs into a MP3 player! 
+
+I've been recently been finding a way to start collecting music the good old fashioned way, but at the same time I have so many spotify playlists I've made over the years. 
+While there are some options to simply parse in a spotify link, I wasn't quite happy with the queueing and the subscriptions I'd often find. So... why not use my web development powers to bypass all that! No more subscriptions, more music.
+
+Note: I'm still going through the techstack and see what's redundant and what isn't. So things may change in the future.
 
 # Current Techstack:
 

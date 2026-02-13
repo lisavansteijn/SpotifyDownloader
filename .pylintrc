@@ -1,7 +1,6 @@
 [MASTER]
 # Load pylint-django plugin
 load-plugins=pylint_django
-python-path=./djangospotifydownloader/
 ignore=tests.py, urls.py, migrations
 
 # Django settings module
