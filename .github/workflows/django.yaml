@@ -26,6 +26,9 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r ./web/requirements.txt
         pip install pylint-django
+    - name: Run Linter
+      run: |
+        pylint --rcfile=.pylintrc --django-settings-module=djangospotifydownloader.settings djangospotifydownloader/
     - name: Run Tests'
       env:
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
@@ -38,4 +41,4 @@ jobs:
         CACHE_KEY_PREFIX: Halo
       run: |
         python ./web/manage.py test
-        pylint --rcfile=.pylintrc --django-settings-module=djangospotifydownloader.settings djangospotifydownloader/
+      
