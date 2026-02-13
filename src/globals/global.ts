@@ -3,4 +3,4 @@
 export const ICON_COLLECTION_NAME = 'solar';
 
 // this gets dynamically imported from Icon.vue.
-export let iconsCollection: string[] = [];
+export const iconsCollection: string[] = [];

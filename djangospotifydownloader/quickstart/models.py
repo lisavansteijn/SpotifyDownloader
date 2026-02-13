@@ -4,6 +4,7 @@ from django.db import models
 class SpotifyLink(models.Model):
     link = models.URLField(max_length=200)
     created_at = models.DateTimeField(auto_now_add=True)
+    songs = models.JSONField(default=list)
     
     class Meta:
         verbose_name = 'Spotify Link'

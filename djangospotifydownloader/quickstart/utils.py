@@ -5,6 +5,9 @@ from django.conf import settings
 import environ
 import os
 
+# Global Spotdl instance
+_spotdl_instance = None
+
 
 # So, according to spotify dev forum, this will have to be done after wednesday, 11th of February 2026 :(
 def get_spotify_access_token():
@@ -17,8 +20,7 @@ def get_spotify_access_token():
     environ.Env.read_env(os.path.join(settings.BASE_DIR, '.env'))
 
     # Get credentials from environment variables
-    client_id = env('SPOTIFY_CLIENT_ID')
-    client_secret = env('SPOTIFY_CLIENT_SECRET')
+    client_id ,client_secret = get_spotify_client_id_and_secret()
 
     # Encode credentials for Basic Auth
     credentials = f"{client_id}:{client_secret}"
@@ -34,8 +36,8 @@ def get_spotify_access_token():
         data={
             'grant_type': 'client_credentials',
         },
+        json=True,
     )
-    
     if response.status_code == 200:
         token_data = response.json()
         access_token = token_data.get('access_token')
@@ -44,3 +46,29 @@ def get_spotify_access_token():
     else:
         print(f"Error getting token: {response.status_code} - {response.text}")
         return None
+
+def get_spotify_client_id_and_secret():
+    env = environ.Env()
+    environ.Env.read_env(os.path.join(settings.BASE_DIR, '.env'))
+    return [env('SPOTIFY_CLIENT_ID'),
+            env('SPOTIFY_CLIENT_SECRET')]
+
+
+def get_spotdl_instance():
+    """
+    Get or initialize the global Spotdl instance.
+    Returns the same instance if already initialized.
+    """
+    global _spotdl_instance
+    
+    if _spotdl_instance is None:
+        from spotdl import Spotdl
+        client_id, client_secret = get_spotify_client_id_and_secret()
+        _spotdl_instance = Spotdl(
+            client_id=client_id, 
+            client_secret=client_secret, 
+            user_auth=False, 
+            no_cache=None
+        )
+    
+    return _spotdl_instance
